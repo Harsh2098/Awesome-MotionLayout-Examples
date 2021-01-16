@@ -9,6 +9,7 @@
         <OnSwipe
             motion:dragDirection="dragDown"
             motion:targetId="@id/imageView" />
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -16,8 +17,10 @@
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:rotationY="20"
+            android:translationZ="12dp"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintHorizontal_bias="0.25"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent">
             <CustomAttribute
@@ -31,8 +34,7 @@
 
     </ConstraintSet>
 
-    <ConstraintSet
-        android:id="@+id/end">
+    <ConstraintSet android:id="@+id/end">
         <Constraint
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -47,6 +49,7 @@
             <CustomAttribute
                 motion:attributeName="Round"
                 motion:customFloatValue="0" />
+
         </Constraint>
     </ConstraintSet>
 
