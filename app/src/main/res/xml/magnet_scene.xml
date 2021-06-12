@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/center"
+        motion:constraintSetStart="@+id/left"
+        motion:duration="5000">
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:onTouchUp="autoComplete"
+            motion:touchAnchorId="@+id/box" />
+
+        <KeyFrameSet>
+            <KeyCycle
+                motion:framePosition="0"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="0"
+                motion:waveOffset="0dp"
+                motion:waveShape="sin"
+                android:translationX="180dp"/>
+
+            <KeyCycle
+                motion:framePosition="50"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="0"
+                motion:waveOffset="90dp"
+                motion:waveShape="sin"
+                android:translationX="72dp"/>
+
+            <KeyCycle
+                motion:framePosition="100"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="3"
+                motion:waveOffset="0dp"
+                motion:waveShape="sin"
+                android:translationX="0dp"/>
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/left"
+        motion:constraintSetStart="@+id/center"
+        motion:duration="5000">
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:onTouchUp="autoComplete"
+            motion:touchAnchorId="@+id/box" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/right"
+        motion:constraintSetStart="@+id/center"
+        motion:duration="5000">
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:onTouchUp="autoComplete"
+            motion:touchAnchorId="@+id/box" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/center"
+        motion:constraintSetStart="@+id/right"
+        motion:duration="5000">
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:onTouchUp="autoComplete"
+            motion:touchAnchorId="@+id/box"
+            motion:touchAnchorSide="right" />
+
+        <KeyFrameSet>
+            <KeyCycle
+                motion:framePosition="0"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="0"
+                motion:waveOffset="0dp"
+                motion:waveShape="sin"
+                android:translationX="180dp"/>
+
+            <KeyCycle
+                motion:framePosition="50"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="0"
+                motion:waveOffset="-60dp"
+                motion:waveShape="sin"
+                android:translationX="44dp"/>
+
+            <KeyCycle
+                motion:framePosition="100"
+                motion:motionTarget="@id/box"
+                motion:wavePeriod="3"
+                motion:waveOffset="0dp"
+                motion:waveShape="sin"
+                android:translationX="0dp"/>
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/left">
+        <Constraint
+            android:id="@+id/box"
+            android:layout_width="@dimen/magnet_length"
+            android:layout_height="@dimen/magnet_length"
+            motion:layout_constraintBottom_toTopOf="@id/ground"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/right">
+        <Constraint
+            android:id="@+id/box"
+            android:layout_width="@dimen/magnet_length"
+            android:layout_height="@dimen/magnet_length"
+            motion:layout_constraintBottom_toTopOf="@id/ground"
+            motion:layout_constraintEnd_toEndOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/center">
+        <Constraint
+            android:id="@+id/box"
+            android:layout_width="@dimen/magnet_length"
+            android:layout_height="@dimen/magnet_length"
+            motion:layout_constraintBottom_toTopOf="@id/ground"
+            motion:layout_constraintEnd_toEndOf="@id/magnet"
+            motion:layout_constraintStart_toStartOf="@id/magnet" />
+    </ConstraintSet>
+
+</MotionScene>
