@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         val buttonMapping = mapOf(
             binding.galleryExampleButton to GalleryActivity::class.java,
             binding.magnetExampleButton to MagnetActivity::class.java,
-            binding.bonusExampleButton to BonusActivity::class.java
+            binding.bonusExampleButton to BonusActivity::class.java,
+            binding.geometryExampleButton to GeometryActivity::class.java
         )
 
         buttonMapping.forEach { (button, activity) ->
@@ -30,7 +31,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSGBusesDebug() {
-        val launchIntent = packageManager.getLaunchIntentForPackage("com.hmproductions.sgbuses.debug")
-        launchIntent?.let { startActivity(it) }
+        packageManager.getLaunchIntentForPackage("com.hmproductions.sgbuses").let {
+            if(it != null) {
+                startActivity(it)
+                return
+            }
+        }
+
+        packageManager.getLaunchIntentForPackage("com.hmproductions.sgbuses.debug")?.let {
+            startActivity(it)
+        }
     }
 }
