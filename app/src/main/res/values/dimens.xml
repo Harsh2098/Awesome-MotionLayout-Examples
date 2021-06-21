@@ -2,4 +2,5 @@
 <resources>
     <dimen name="magnet_length">64dp</dimen>
     <dimen name="ground_height">24dp</dimen>
+    <dimen name="rowHeight">86dp</dimen>
 </resources>

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val buttonMapping = mapOf(
             binding.galleryExampleButton to GalleryActivity::class.java,
             binding.magnetExampleButton to MagnetActivity::class.java,
-            binding.bonusExampleButton to BonusActivity::class.java,
+            binding.bonusExampleButton to NotificationPanelActivity::class.java,
             binding.geometryExampleButton to GeometryActivity::class.java
         )
 
@@ -27,6 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.superBonusExampleButton.setOnClickListener {
             openSGBusesDebug()
+        }
+
+        binding.superBonusExampleButton.setOnLongClickListener {
+            val intent = Intent(this, CarouselActivity::class.java)
+            startActivity(intent)
+            true
         }
     }
 

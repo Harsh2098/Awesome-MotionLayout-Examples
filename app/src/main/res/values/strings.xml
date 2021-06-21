@@ -3,4 +3,5 @@
     <string name="wallpaper">wallpaper</string>
     <string name="letters">letters</string>
     <string name="trigger_motion_layout_animation">Trigger motion layout animation</string>
+    <string name="some_button">Some button</string>
 </resources>

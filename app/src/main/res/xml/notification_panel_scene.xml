@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/middleRow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/topRow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            app:layout_constraintEnd_toStartOf="@id/middleRow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/bottomRow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/rowHeight"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/middleRow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:background="#0F0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topRow" />
+
+        <Constraint
+            android:id="@id/topRow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:background="#F00"
+            app:layout_constraintBottom_toTopOf="@id/middleRow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/bottomRow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rowHeight"
+            android:background="#00F"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/middleRow" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="4000">
+
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:maxVelocity="0.8"
+            app:onTouchUp="autoComplete" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="50"
+                app:keyPositionType="pathRelative"
+                app:motionTarget="@id/middleRow"
+                app:pathMotionArc="startVertical"
+                app:percentX="0.42"
+                app:percentY="-0.39" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="75"
+                app:motionTarget="@id/bottomRow" />
+
+            <KeyTrigger
+                app:motionTarget="@id/topRow"
+                app:framePosition="50"
+                app:triggerId="@+id/centralFabTrigger" />
+
+        </KeyFrameSet>
+
+    </Transition>
+
+</MotionScene>
